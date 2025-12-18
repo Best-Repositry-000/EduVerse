@@ -8,6 +8,7 @@ public class EduVerseApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EduVerseApplication.class, args);
+        System.out.println("EduVerse Application Started");
     }
 
 }

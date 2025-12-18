@@ -2,8 +2,11 @@ package com.example.eduverse.Service;
 
 import com.example.eduverse.Model.Courses;
 
+import java.util.List;
+
 public interface CoursesService {
-    public Courses createCourse();
-    public void editCourse();
-    public String deleteCourse(String courseCode);
+    void createCourse(Courses course);
+//    public void editCourse();
+    void deleteCourseByCourseCode(String courseCode);
+    List<Courses> getAllCourses();
 }

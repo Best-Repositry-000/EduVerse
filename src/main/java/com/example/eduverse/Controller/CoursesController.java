@@ -5,20 +5,26 @@ import com.example.eduverse.ServiceImpl.CoursesServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/courses")
 @RequiredArgsConstructor
 public class CoursesController {
     private final CoursesServiceImpl coursesService;
 
-    @PostMapping("/courses")
-    public ResponseEntity<Courses>  createCourse(){
-        Courses c = coursesService.createCourse();
-        return ResponseEntity.ok(c);
+    @PostMapping("/create")
+    public Courses  createCourse(@RequestBody Courses course){
+        coursesService.createCourse(course);
+        return course;
     }
-    @DeleteMapping("/courses/{courseCode}")
-    public ResponseEntity<String>  deleteCourse(@PathVariable String courseCode){
-        return ResponseEntity.ok(coursesService.deleteCourse(courseCode));
+    @DeleteMapping("/delete/{courseCode}")
+    public ResponseEntity<Void>  deleteCourse(@PathVariable String courseCode){
+        coursesService.deleteCourseByCourseCode(courseCode);
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/all")
+    public List<Courses> getAllCourses(){
+        return coursesService.getAllCourses();
     }
 }
