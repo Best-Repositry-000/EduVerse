@@ -1,6 +1,6 @@
 package com.example.eduverse.Controller;
 
-import com.example.eduverse.Model.Courses;
+import com.example.eduverse.Model.Course;
 import com.example.eduverse.ServiceImpl.CoursesServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +14,19 @@ public class CoursesController {
     private final CoursesServiceImpl coursesService;
 
     @PostMapping("/create")
-    public Courses  createCourse(@RequestBody Courses course){
+    public Course createCourse(@RequestBody Course course){
         coursesService.createCourse(course);
         return course;
     }
-    @DeleteMapping("/delete/{courseCode}")
-    public ResponseEntity<Void>  deleteCourse(@PathVariable String courseCode){
-        coursesService.deleteCourseByCourseCode(courseCode);
-        return ResponseEntity.noContent().build();
-    }
-    @GetMapping("/all")
-    public List<Courses> getAllCourses(){
-        return coursesService.getAllCourses();
-    }
+
+//    @DeleteMapping("/delete/{courseCode}")
+//    public ResponseEntity<Void>  deleteCourse(@PathVariable String courseCode){
+//        coursesService.deleteCourseByCourseCode(courseCode);
+//        return ResponseEntity.noContent().build();
+//    }
+//
+//    @GetMapping("/all")
+//    public List<Course> getAllCourses(){
+//        return coursesService.getAllCourses();
+//    }
 }
